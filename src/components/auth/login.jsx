@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Endpoints } from "../../Endpoints";
 import SendData from "../../hooks/SendData";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 function trimmer(str) {
   return str
@@ -11,14 +13,16 @@ function trimmer(str) {
     .toLocaleLowerCase();
 }
 
-export default function Login({ loginData }) {
+export default function Login(props) {
+  const history = useHistory();
   //variables
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   //parse answer
   async function checkCandidate(promise) {
     const resp = await (await promise).json();
-    loginData(resp);
+    cookies.set("user", resp.token);
+    history.push("/home");
   }
   //check and send data
   function SendForm(event) {

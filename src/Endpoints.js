@@ -1,5 +1,5 @@
 export const Endpoints = {
-    host:"https://alias-game-server.herokuapp.com/",//https://localhost:5000
+    host:"http://localhost:5000/",//https://alias-game-server.herokuapp.com/
     login:"api/login",
     register:"api/register",
     isAuthenticated:"api/isAuthenticated"

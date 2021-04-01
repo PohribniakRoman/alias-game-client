@@ -1,36 +1,23 @@
-import { BrowserRouter } from "react-router-dom";
-import Auth from "./Auth";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 import Home from "./Home";
-import { useEffect, useState } from "react";
-import { Endpoints } from "../Endpoints";
-import SendData from "../hooks/SendData";
-
-function getCookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([$?*|{}\]\\^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
+import Login from "./auth/login";
+import Register from "./auth/Register";
 
 export default function Routes() {
-  useEffect(() => {
-    SendData(`${Endpoints.host + Endpoints.isAuthenticated}`,{token:getCookie("user")}).then((data) => {
-      data.json().then((data) => {
-        console.log(data);
-        updateAuth(data.isAuthenticated);
-      });
-    });
-  }, []);
-  const [isAuthenticated, updateAuth] = useState(false);
-  function updateStatus(status) {
-    updateAuth(status.registrated)
-  }
   return (
     <BrowserRouter>
-      <Auth updateStatus={updateStatus} isAuthenticated={isAuthenticated}/>
-      <ProtectedRoute component={Home} isAuth={isAuthenticated} path="/*" />
-      <ProtectedRoute component={Home} isAuth={isAuthenticated} path="/home" />
+      <section className="auth__wrapper">
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/registrate">
+            <Register />
+          </Route>
+          <ProtectedRoute component={Home} path="/home" />
+        </Switch>
+      </section>
     </BrowserRouter>
   );
 }

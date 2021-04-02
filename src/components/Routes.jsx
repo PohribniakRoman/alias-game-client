@@ -7,17 +7,15 @@ import Register from "./auth/Register";
 export default function Routes() {
   return (
     <BrowserRouter>
-      <section className="auth__wrapper">
-        <Switch>
+      <Switch>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/registrate">
             <Register />
           </Route>
-          <ProtectedRoute component={Home} path="/home" />
-        </Switch>
-      </section>
+      </Switch>
+      <ProtectedRoute component={Home} path="/" />
     </BrowserRouter>
   );
 }

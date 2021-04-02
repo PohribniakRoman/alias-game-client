@@ -3,7 +3,10 @@
 // font-family: 'Work Sans', sans-serif;
 //files
 @import "reset";
+@import "navigation";
+@import "home";
 @import "login";
+
 *{
     font-family: 'Work Sans', sans-serif !important;
 }

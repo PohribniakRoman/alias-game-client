@@ -22,7 +22,7 @@ export default function Login(props) {
   async function checkCandidate(promise) {
     const resp = await (await promise).json();
     cookies.set("user", resp.token);
-    history.push("/home");
+    history.push("/");
   }
   //check and send data
   function SendForm(event) {
@@ -40,53 +40,56 @@ export default function Login(props) {
   }
 
   return (
-    <section className="auth">
-      <div className="auth__container">
-        <form onSubmit={SendForm}>
-          <h1>
-            Hello!Welcome back to
-            <br /> Alias!
-          </h1>
-          <p>Entyer your details below here</p>
-          <input
-            type="text"
-            value={login}
-            onChange={(event) => {
-              setLogin(event.target.value);
-            }}
-            name="login"
-            required
-            placeholder="Login"
-          />
-          <input
-            placeholder="Password"
-            type="password"
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-            value={password}
-            name="password"
-            required
-          />
-          <input className="" type="submit" value="Login" />
-        </form>
-        <div className="auth__change">
-          Don't have an account yet?{" "}
-          <Link to="/registrate">
-            <b>Signup Now</b>
-          </Link>
+    <section className="auth__wrapper">
+      <section className="auth">
+        <div className="auth__container">
+          <form onSubmit={SendForm}>
+            <h1>
+              Hello!Welcome back to
+              <br /> Alias!
+            </h1>
+            <p>Entyer your details below here</p>
+            <input
+              type="text"
+              value={login}
+              onChange={(event) => {
+                setLogin(event.target.value);
+              }}
+              name="login"
+              required
+              placeholder="Login"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              value={password}
+              name="password"
+              required
+            />
+            <input className="" type="submit" value="Login" />
+          </form>
+          <div className="auth__change">
+            Don't have an account yet?{" "}
+            <Link to="/registrate">
+              <b>Signup Now</b>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="auth__container">
-        <div className="auth__content">
-          <h1>Alias and what it means!</h1>
-          Alias is a board game, where the objective of the players is to
-          explain words to each other. Hence, Alias is similar to Taboo, but the
-          only forbidden word in the explanations is the word to be explained.
-          The game is played in teams of varying size, and fits well as a party
-          game for larger crowds. The game is very competitive.
+        <div className="auth__container">
+          <div className="auth__content">
+            <h1>Alias and what it means!</h1>
+            Alias is a board game, where the objective of the players is to
+            explain words to each other. Hence, Alias is similar to Taboo, but
+            the only forbidden word in the explanations is the word to be
+            explained. The game is played in teams of varying size, and fits
+            well as a party game for larger crowds. The game is very
+            competitive.
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   );
 }

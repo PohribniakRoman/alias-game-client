@@ -5,14 +5,6 @@ import SendData from "../../hooks/SendData";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
-function trimmer(str) {
-  return str
-    .split("")
-    .filter((char) => char !== " ")
-    .join("")
-    .toLocaleLowerCase();
-}
-
 export default function Login(props) {
   const history = useHistory();
   //variables
@@ -21,17 +13,31 @@ export default function Login(props) {
   //parse answer
   async function checkCandidate(promise) {
     const resp = await (await promise).json();
-    cookies.set("user", resp.token);
-    history.push("/");
+    console.log(resp);
+    if (resp.logined) {
+      cookies.set("user", resp.token, {
+        maxAge: resp.token.split("-q1w4/")[1],
+      });
+      history.push("/");
+    } else {
+      alert(resp.message);
+    }
   }
   //check and send data
   function SendForm(event) {
     event.preventDefault();
-    if (trimmer(login).length > 6 && trimmer(password).length > 6) {
+    setLogin(login.trim());
+    setPassword(password.trim());
+    if (
+      login.length > 3 &&
+      password.length > 3 &&
+      password.length < 16 &&
+      login.length < 16
+    ) {
       checkCandidate(
         SendData(`${Endpoints.host + Endpoints.login}`, {
-          login: trimmer(login),
-          password: trimmer(password),
+          login,
+          password,
         })
       );
     } else {

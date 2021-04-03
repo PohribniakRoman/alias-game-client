@@ -14,8 +14,8 @@ export default function Routes() {
           <Route path="/registrate">
             <Register />
           </Route>
-      </Switch>
       <ProtectedRoute component={Home} path="/" />
+      </Switch>
     </BrowserRouter>
   );
 }

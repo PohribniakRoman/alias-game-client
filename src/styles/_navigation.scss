@@ -4,7 +4,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    &__logo{
+    &__logo {
         position: absolute;
         left: 0;
         display: flex;
@@ -16,6 +16,7 @@
         height: 7vh;
     }
     &__menu {
+        -webkit-user-select: none;
         min-height: 60px;
         padding: 0;
         margin: 0;
@@ -27,31 +28,80 @@
         justify-content: flex-end;
         &--item {
             position: relative;
-            width: 100px;
-            height: 30px;
-            margin: 10px 20px;
-            border: 1px solid #fff;
+            min-width: 7vw;
+            height: 2vw;
+            margin: 0.8vw 1.3vw;
             cursor: pointer;
+            display: flex;
+            font-size: 0.9vw;
+            justify-content: center;
+            align-items: center;
             &:hover .hover {
                 -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
                 -webkit-transform-origin: bottom center;
                 transform-origin: bottom center;
             }
-            &:hover .text{
+            &:hover .text {
                 color: #000;
             }
-            &:nth-child(4){
+            &:nth-child(4) {
                 margin-right: 8%;
             }
-            &:last-child{
-                border: none;
+            &:last-child {
+                padding: 0 10px;
+                font-size: 0.8vw;
+                color: #88bdbc;
+                border-radius: 10px;
+                background-color: #fff;
+                margin-right: 5%;
+                position: relative;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #fff;
-                & p{
+            }
+            & .log-out {
+                display: flex;
+                & p {
                     margin: 0 5px;
+                }
+            }
+            &-list {
+                border-radius: 5px;
+                position: absolute;
+                top: 100%;
+                margin-top: 0.8vw;
+                padding: 5px 0;
+                background-color: #fff;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background-color: #ffffff;
+                    top: 0;
+                    transform: rotate(45deg);
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    width: 2vw;
+                    height: 2vw;
+                }
+                & .selected {
+                    background-color: lightgray;
+                }
+                &_item {
+                    z-index: 100;
+                    position: relative;
+                    font-size: 0.9vw;
+                    min-width: 10vw;
+                    padding: 0.6vw 1vw;
+                    color: #000;
+                    transition: 0.3s;
+                    &:not(:last-child) {
+                        border-bottom: 1px solid gray;
+                    }
+                }
+                :hover {
+                    background-color: lightgray;
                 }
             }
         }
@@ -59,7 +109,7 @@
             cursor: context-menu;
             background-color: #fff;
             border-color: #000;
-            & .text{
+            & .text {
                 color: #000;
             }
         }
@@ -102,11 +152,10 @@
     }
 }
 
-a{
+a {
     text-decoration: none !important;
     color: unset;
 }
 ion-icon {
-    font-size: 18px;
-  }
-  
+    font-size: 1vw;
+}

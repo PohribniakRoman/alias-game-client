@@ -13,7 +13,6 @@ export default function Register() {
   //parse answer
   async function checkCandidate(promise) {
     const resp = await (await promise).json();
-    console.log(resp);
     if (resp.registrated) {
       cookies.set("user", resp.token, {
         maxAge: resp.token.split("-q1w4/")[1],

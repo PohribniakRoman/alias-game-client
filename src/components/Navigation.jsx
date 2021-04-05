@@ -13,11 +13,7 @@ export default function Navigation() {
     <section className="nav">
       <ul className="nav__menu">
         <li className="nav__logo">Alias</li>
-        <li
-          className={`nav__menu--item ${
-            location === "/" ? "active" : ""
-          }`}
-        >
+        <li className={`nav__menu--item ${location === "/" ? "active" : ""}`}>
           {location !== "/" ? (
             <Link to="/">
               <div className="hover"></div>
@@ -68,13 +64,19 @@ export default function Navigation() {
             <ion-icon name="caret-up-outline"></ion-icon>
           )}
           <ul className={`nav__menu--item-list ${isOpen ? "" : "none"}`}>
-            <li className={`nav__menu--item-list_item log-out ${location === "/friends" ? "selected" : ""}`}>
-              {location !== "/friends" ? (
-                <Link to="/friends">Friends</Link>
-              ) : (
-                "Friends"
-              )}
-            </li>
+            {location !== "/friends" ? (
+              <Link to="/friends">
+                <li
+                  className={`nav__menu--item-list_item log-out ${
+                    location === "/friends" ? "selected" : ""
+                  }`}
+                >
+                  Friends
+                </li>
+              </Link>
+            ) : (
+              <li className="nav__menu--item-list_item log-out">Friends</li>
+            )}
             <li
               className="nav__menu--item-list_item log-out"
               onClick={() => {
@@ -90,7 +92,6 @@ export default function Navigation() {
           </ul>
         </li>
       </ul>
-      <nav className="nav__bar"></nav>
     </section>
   );
 }

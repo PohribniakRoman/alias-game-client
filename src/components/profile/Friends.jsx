@@ -9,7 +9,7 @@ export default function Friends() {
   const [myFriends, updateMyFriends] = useState([]);
   const [counter, updateCounter] = useState(0);
 
-  const currentName = cookies.get("user").split("-q1w4/")[0];
+  const [currentName] = cookies.get("user").split("-q1w4/");
   useEffect(() => {
     const resp = async () => {
       const dataFetch = await (
@@ -27,17 +27,19 @@ export default function Friends() {
       updateMyFriends(
         dataFetch.filter((element) => typeof element === "string")
       );
+      updateCounter(dataFetch.length);
     };
     getFriends();
   }, []);
-  if (friends.length < 1 && myFriends.length < 1) {
+  if (friends.length < 1) {
     return null;
   }
+  console.log(friends);
   return (
     <ul className="friends">
       <h1>Friends</h1>
-        <b>All users counter:{friends.length - 1}</b>
-        <i>Your friends:{counter}</i>
+      <b>All users counter:{friends.length - 1}</b>
+      <i>Your friends:{counter}</i>
       {friends.map((name, index) => {
         const added = myFriends.includes(name.login);
         if (name.login !== currentName) {
@@ -48,7 +50,7 @@ export default function Friends() {
                 className={`friends__item--button-add ${added ? "none" : ""}`}
                 id="addToFriend"
                 onClick={(event) => {
-                  updateCounter(counter+1);
+                  updateCounter(counter + 1);
                   event.target.classList.add("none");
                   event.target
                     .closest("li")
@@ -70,7 +72,7 @@ export default function Friends() {
                   added ? "" : "none"
                 }`}
                 onClick={(event) => {
-                  updateCounter(counter-1);
+                  updateCounter(counter - 1);
                   event.target.classList.add("none");
                   event.target
                     .closest("li")

@@ -97,9 +97,7 @@
                     padding: 0.6vw 1vw;
                     color: #000;
                     transition: 0.3s;
-                    &:not(:last-child) {
-                        border-bottom: 1px solid gray;
-                    }
+                    border-bottom: 1px solid gray;
                 }
                 :hover {
                     background-color: lightgray;

@@ -64,18 +64,19 @@ export default function Navigation() {
             <ion-icon name="caret-up-outline"></ion-icon>
           )}
           <ul className={`nav__menu--item-list ${isOpen ? "" : "none"}`}>
-            {location !== "/friends" ? (
-              <Link to="/friends">
-                <li
-                  className={`nav__menu--item-list_item log-out ${
-                    location === "/friends" ? "selected" : ""
-                  }`}
-                >
-                  Friends
-                </li>
+          {location !== "/profile" ? (
+              <Link to="/profile">
+                <li className="nav__menu--item-list_item">Profile</li>
               </Link>
             ) : (
-              <li className="nav__menu--item-list_item log-out">Friends</li>
+              <li className="nav__menu--item-list_item selected">Profile</li>
+            )}
+            {location !== "/friends" ? (
+              <Link to="/friends">
+                <li className="nav__menu--item-list_item">Friends</li>
+              </Link>
+            ) : (
+              <li className="nav__menu--item-list_item selected">Friends</li>
             )}
             <li
               className="nav__menu--item-list_item log-out"

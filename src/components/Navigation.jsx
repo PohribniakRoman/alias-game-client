@@ -25,11 +25,11 @@ export default function Navigation() {
         </li>
         <li
           className={`nav__menu--item ${
-            location === "/joinGame" ? "active" : ""
+            location === "/join-game" ? "active" : ""
           }`}
         >
-          {location !== "/joinGame" ? (
-            <Link to="/joinGame">
+          {location !== "/join-game" ? (
+            <Link to="/join-game">
               <div className="hover"></div>
               <span className="text">Join game</span>
             </Link>
@@ -39,11 +39,11 @@ export default function Navigation() {
         </li>
         <li
           className={`nav__menu--item ${
-            location === "/newGame" ? "active" : ""
+            location === "/new-game" ? "active" : ""
           }`}
         >
-          {location !== "/newGame" ? (
-            <Link to="/newGame">
+          {location !== "/new-game" ? (
+            <Link to="/new-game">
               <div className="hover"></div>
               <span className="text">New game</span>
             </Link>

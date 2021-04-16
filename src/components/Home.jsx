@@ -4,6 +4,7 @@ import Friends from "./profile/Friends";
 import { Route } from "react-router-dom";
 import Profile from "./profile/Profile";
 import NewGame from "./game/New-game";
+import JoinGame from "./game/Join-game";
 function Home() {
   return (
     <section className="home">
@@ -16,6 +17,9 @@ function Home() {
       </Route>
       <Route path="/new-game">
           <NewGame />
+      </Route>
+      <Route path="/join-game">
+          <JoinGame />
       </Route>
     </section>
   );

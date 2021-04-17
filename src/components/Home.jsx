@@ -5,6 +5,9 @@ import { Route } from "react-router-dom";
 import Profile from "./profile/Profile";
 import NewGame from "./game/New-game";
 import JoinGame from "./game/Join-game";
+import Game from "./game/Game";
+
+
 function Home() {
   return (
     <section className="home">
@@ -21,6 +24,7 @@ function Home() {
       <Route path="/join-game">
           <JoinGame />
       </Route>
+      <Route path="/game/:roomId" exact component={Game} />
     </section>
   );
 }

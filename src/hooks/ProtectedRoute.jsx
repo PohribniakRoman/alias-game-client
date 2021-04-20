@@ -25,7 +25,7 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
   }, []);
 
   if (typeof isAuthenticated !== "boolean") {
-    return null;
+    return <div>loading...</div>;
   }
 
   return (

@@ -17,6 +17,7 @@ export default function Game({ match }) {
         if (newClientId) {
           console.log(`New player id:${newClientId}`);
         }
+        socket.emit("SAY_HI",({id: match.params.roomId,name:cookies.get("user").split("-q1w4")[0]}))
       },
       []
     );
@@ -27,22 +28,15 @@ export default function Game({ match }) {
     socket.emit("JOIN_ROOM", {
       id: match.params.roomId,
     });
-
-    socket.emit("SEND_NAME", {
-      roomId: match.params.roomId,
-      name: cookies.get("user").split("-q1w4/")[0],
-    });
-  
-    socket.on("SAY_NAME", ({ player }) => {
-      console.log(player);
-      updatePlayers([...players, player]);
-    });
     
     return () => {
       socket.emit("LEAVE_ROOM", { id: match.params.roomId });
     };
-  });
-  console.log(players);
+  },[]);
+  socket.on("HELLO",(name)=>{
+    console.log(name,players);
+    updatePlayers([...players,name])
+  })
   return (
     <section className="game">
       <ul className="game__player-list">

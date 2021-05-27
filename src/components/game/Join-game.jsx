@@ -3,23 +3,22 @@ import socket from "../../ws";
 import { useHistory } from "react-router";
 
 export default function JoinGame() {
-    const history = useHistory();
-
-    const [rooms, updateRooms] = useState([]);
-  
+  const [myRooms,updateRooms] = useState([]);  
+  const history = useHistory();
     useEffect(() => {
-      socket.on("SHARE_ROOMS", ({ rooms }) => {
+      socket.on("SHARE_ROOMS",({rooms})=>{
         updateRooms(rooms);
-      });
-      socket.emit("FETCH_ROOMS");
+        })
+
+      socket.emit("GET_ROOMS");
     },[]);
     return (
         <ul>
-        {rooms.map(roomId=>{
-          return <li key={roomId} onClick={()=>{
-          history.push(`/game/${roomId}`);
-          }}>{roomId}</li>
-        })}
+          {myRooms.map(room=>{
+            return <li key={room} onClick={()=>{
+              history.push(`/game/${room}`);
+            }}>{room}</li>
+          })}
       </ul>
         );
   }

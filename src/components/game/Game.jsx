@@ -16,9 +16,12 @@ export default function Game({ match }) {
     })
 
     socket.on("SAY_NAME",()=>{
-      socket.emit("GREETING",({name:cookies.get("user").split("-q1w4/")[0]}))
+      socket.emit("SEND_NAME",{name:cookies.get("user").split("-q1w4/")[0]})
     })
-    
+
+    socket.on("GET_NAME",({name})=>{
+      console.log(name);
+    })
     socket.emit("JOIN_ROOM",{roomId:match.params.roomId});
 
     return () => {

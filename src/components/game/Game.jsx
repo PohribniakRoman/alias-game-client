@@ -11,21 +11,14 @@ export default function Game({ match }) {
     socket.on("ENTER",({clients,newClient_id})=>{
       updatePlayers(clients);
     })
-    socket.on("LEFT",({clients,leftClient_id})=>{
+    socket.on("LEFT",({clients,leftClient_id})=>{ 
       updatePlayers(clients);
     })
 
-    socket.on("SAY_NAME",()=>{
-      socket.emit("SEND_NAME",{name:cookies.get("user").split("-q1w4/")[0]})
-    })
-
-    socket.on("GET_NAME",({name})=>{
-      console.log(name);
-    })
-    socket.emit("JOIN_ROOM",{roomId:match.params.roomId});
+    socket.emit("JOIN_ROOM",{roomId:match.params.roomId,name:cookies.get("user").split("-q1w4/")[0]});
 
     return () => {
-      socket.emit("LEAVE_ROOM", { roomId: match.params.roomId });
+      socket.emit("LEAVE_ROOM", { roomId: match.params.roomId,name:cookies.get("user").split("-q1w4/")[0]});
     };
   },[match.params.roomId]);
   return (

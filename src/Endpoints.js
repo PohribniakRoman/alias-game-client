@@ -7,5 +7,6 @@ export const Endpoints = {
   addFriends: "api/addFriends",
   removeFriend: "api/removeFriend",
   getAllFriends: "api/getAllFriends",
-  getStat:"api/get-profile"
+  getStat:"api/get-profile",
+  roomInfo:"api/getRoomInfo"
 };

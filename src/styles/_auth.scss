@@ -1,7 +1,49 @@
 .auth{
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flex;
+    &__container{
+        @include flex;
+        height: 700px;
+        width: 700px;
+        background-color: rgb(9, 126, 141);
+        border-radius: 50%;
+        flex-direction: column;
+    }
+    &__wrapper{
+        @include flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 60%;
+        height: 60%;
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+    }
+    &__title{
+        position: absolute;
+        top:20px;
+        font-size: 46px;
+        color:rgb(65, 65, 65);
+        margin-bottom: 15px;
+    }
+    &__switch{
+        color: rgb(0, 157, 255);
+        text-decoration: underline;
+        cursor: pointer;
+        position: absolute;
+        user-select: none;
+        bottom: 15px;
+    }
+    &__from{
+        @include flex;
+        flex-direction: column;
+        width: 80%;
+        & span{
+            width: 100%;
+        }
+    }
+    &__submit{
+        width: 150px !important;
+        margin-top: 25px;
+    }
 }

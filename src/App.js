@@ -1,6 +1,8 @@
+import Auth from "./components/auth/Auth";
+
 function App() {
   return (<>
-    setup    
+    <Auth/>    
   </>);
 }
 

@@ -26,6 +26,13 @@
         color:rgb(65, 65, 65);
         margin-bottom: 15px;
     }
+    &__subtitle{
+        position: absolute;
+        top: 63px;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: gray;
+    }
     &__switch{
         color: rgb(0, 157, 255);
         text-decoration: underline;

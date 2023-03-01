@@ -7,7 +7,7 @@ const onInputHandler = (event,update) => {
     })
 }
 
-const submit = (event,data,isLogin) =>{
+const submit = (event,data,isLogin,dispatch) =>{
     event.preventDefault();
     if(data?.password?.trim() > 8 && data?.login?.trim().length > 3){
         fetch(ENDPOINTS[`${isLogin?"login":"reg"}`],{
@@ -15,7 +15,7 @@ const submit = (event,data,isLogin) =>{
             body:JSON.stringify(data),
         })
     }else{
-        
+        dispatch({type:"NEW_NOTIFICATION",payload:{message:"Wrong input data!",variant:"warning"}})
     }
 }
 

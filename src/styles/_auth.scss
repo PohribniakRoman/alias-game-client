@@ -1,34 +1,26 @@
 .auth{
-    height: 100vh;
     @include flex;
+    height: 100vh;
+    &__wrapper{
+        width: 25%;
+        height:100%;
+        @include flex;
+    }
     &__container{
         @include flex;
-        height: 700px;
-        width: 700px;
-        background-color: rgb(9, 126, 141);
-        border-radius: 50%;
-        flex-direction: column;
-    }
-    &__wrapper{
-        @include flex;
-        flex-direction: column;
-        background-color: #ffffff;
-        width: 60%;
-        height: 60%;
-        border-radius: 10px;
-        padding: 20px;
+        height: 370px;
         position: relative;
     }
     &__title{
         position: absolute;
-        top:20px;
+        top:15px;
         font-size: 46px;
         color:rgb(65, 65, 65);
         margin-bottom: 15px;
     }
     &__subtitle{
         position: absolute;
-        top: 63px;
+        top: 58px;
         font-size: 12px;
         text-transform: uppercase;
         color: gray;
@@ -44,13 +36,37 @@
     &__from{
         @include flex;
         flex-direction: column;
-        width: 80%;
-        & span{
-            width: 100%;
+    }
+    &__field{
+        margin-top: 10px !important;
+        min-width: 350px !important;
+        & .MuiOutlinedInput-notchedOutline{
+            border-radius: 5px !important;
+        }
+        & .MuiOutlinedInput-notchedOutline{
+            height: 50px !important;
+        }
+        & .MuiAutocomplete-inputRoot{
+            height: 50px !important;
+        }
+        & .MuiOutlinedInput-input{
+            margin-top: -2px !important;
+        }
+        & .MuiInputLabel-outlined{
+            margin-top: -3px !important;
         }
     }
     &__submit{
         width: 150px !important;
-        margin-top: 25px;
+        height: 40px !important;
+        background-color: #000000 !important;
+        margin-top: 15px !important;
+    }
+    &__banner{
+        width: 75%;
+        height: 100%;
+        background-image: url("https://creativedestructionlab.com/wp-content/uploads/2021/05/CDL-Neuro-Press-1600x900.jpg");
+        background-size: cover;
+        background-position: center;
     }
 }

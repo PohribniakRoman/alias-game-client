@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { onInputHandler, submit } from "./authHandlers";
+import {Button, TextField} from "@mui/material";
 
 
 export default function Auth(){
@@ -11,34 +11,39 @@ export default function Auth(){
 
     return(
             <section className="auth">
-                <div className="auth__container">
-                    <div className="auth__wrapper">
-                        <h1 className="auth__title">Welcome!</h1>
+                <div className="auth__wrapper">
+                    <div className="auth__container">
+                        <h1 className="auth__title">Alias</h1>
                         <h5 className="auth__subtitle">{authToggle?"registration":"login"}</h5>
-                        <Form className="auth__from" onSubmit={event=>{submit(event,inputController,authToggle?true:false,dispatch)}}>
-                            <span>
-                                <Form.Label>Username:</Form.Label>
-                                <Form.Control className="mb-3"
+                        <form className="auth__from" onSubmit={event=>{submit(event,inputController,authToggle?true:false,dispatch)}}>
+                                <TextField
                                     required
-                                    name="login" 
-                                    placeholder="login"
+                                    className="auth__field"
+                                    autoComplete="off"
+                                    variant="outlined"
+                                    name="login"
+                                    label="login"
                                     onInput={(event)=>{onInputHandler(event,updateController)}}
                                     value={inputController.login}/>
-                                <Form.Label>Password:</Form.Label>
-                                <Form.Control
+                                <TextField
                                     required
-                                    name="password" 
-                                    placeholder="Password" 
+                                    className="auth__field"
+                                    variant="outlined"
+                                    autoComplete="off"
+                                    name="password"
+                                    label="Password"
                                     type="Password"
                                     onInput={(event)=>{onInputHandler(event,updateController)}}
                                     value={inputController.password}/>
-                            </span>
-                            <Button className="auth__submit" type="submit">Sign in</Button>
-                        </Form>
+                            <Button  variant="contained" className="auth__submit" type="submit">{authToggle?"sign up":"enter"}</Button>
+                        </form>
                         <p className="auth__switch" onClick={()=>updateToggle(!authToggle)}>
                             {!authToggle?"Alredy have an account?":"Dont have any account?"}
                         </p>
                     </div>
+                </div>
+                <div className="auth__banner">
+
                 </div>
             </section>
         )

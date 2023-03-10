@@ -6,7 +6,7 @@ export default function NotificationContainer() {
     return(
         <section className="notification-container">
             {messages.map(notification=>{
-               return <Notification key={notification.id} message={notification.message} variant={notification.variant} time={new Date().getTime()} id={notification.id}/>    
+               return <Notification key={notification.id} message={notification.message} variant={notification.variant} id={notification.id}/>
             })}
         </section>
     )

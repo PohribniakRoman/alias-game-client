@@ -2,12 +2,17 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { onInputHandler, submit } from "./authHandlers";
 import {Button, TextField} from "@mui/material";
-
+import { Navigate } from "react-router-dom";
 
 export default function Auth(){
     const [authToggle,updateToggle] = useState(false);
-    const [inputController,updateController] = useState({});
+    const [inputController,updateController] = useState({login:"",password:""});
+    const [toRedirect,updateRedirect] = useState(false);
     const dispatch = useDispatch();
+
+    if(toRedirect){
+        return <Navigate to="/"/>
+    }
 
     return(
             <section className="auth">
@@ -15,7 +20,7 @@ export default function Auth(){
                     <div className="auth__container">
                         <h1 className="auth__title">Alias</h1>
                         <h5 className="auth__subtitle">{authToggle?"registration":"login"}</h5>
-                        <form className="auth__from" onSubmit={event=>{submit(event,inputController,authToggle?true:false,dispatch)}}>
+                        <form className="auth__from" onSubmit={event=>{submit(event,inputController,!authToggle,dispatch,updateController,updateRedirect)}}>
                                 <TextField
                                     required
                                     className="auth__field"
@@ -38,7 +43,7 @@ export default function Auth(){
                             <Button  variant="contained" className="auth__submit" type="submit">{authToggle?"sign up":"enter"}</Button>
                         </form>
                         <p className="auth__switch" onClick={()=>updateToggle(!authToggle)}>
-                            {!authToggle?"Alredy have an account?":"Dont have any account?"}
+                            {!authToggle?"Already have an account?":"Dont have any account?"}
                         </p>
                     </div>
                 </div>

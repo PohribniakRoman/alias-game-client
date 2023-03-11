@@ -1,6 +1,11 @@
 const host = "http://localhost:5000";
 
 export const ENDPOINTS = {
-    login:`${host}/login`,
-    reg:`${host}/reg`,
+    login:`${host}/auth/login`,
+    reg:`${host}/auth/register`,
+    params:{
+        method:"POST",
+        mode: "cors",
+        headers:{"Content-Type":"application/json"}
+        }
 }

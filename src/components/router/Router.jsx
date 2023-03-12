@@ -12,7 +12,7 @@ export const Router = () =>{
         <Route exact path="/auth" element={<Auth/>}/>
         <Route exact path="/" element={<ProtectedRouter authorized={<Home/>} />}/>
        <Route exact path="/new" element={<ProtectedRouter authorized={<NewGame/>} />}/>
-       <Route exact path="/profile/:username" element={<ProtectedRouter authorized={<Profile/>} />}/>
+       <Route exact path="/profile/:userid" element={<ProtectedRouter authorized={<Profile/>} />}/>
        <Route exact path="/lobbies" element={<ProtectedRouter authorized={<Lobbies/>} />}/>
 
         <Route path="/*" element={<Page404/>}/>

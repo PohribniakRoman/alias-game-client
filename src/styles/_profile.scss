@@ -1,0 +1,97 @@
+.profile{
+  user-select: none;
+  @include flex;
+  flex-direction: column;
+  &__id{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    user-select: all;
+    font-size: 14px;
+    color: gray;
+  }
+  &__avatar{
+    background-size: cover;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  &__title{
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: capitalize;
+  }
+  &__statistic{
+    margin-top: 20px;
+    width: 500px;
+    background: rgba(232, 232, 232, 0.5);
+    border-radius:10px;
+    height: 150px;
+    -webkit-box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
+    box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
+    @include flex;
+    &--item{
+      border-right: 1px solid gray;
+      width: 33%;
+      height: 100%;
+      @include flex;
+      flex-direction: column;
+      & h3{
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      & span{
+        font-size: 36px;
+        font-weight: 300;
+      }
+    }
+  }
+  &__friends{
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 500px;
+    min-height: 300px;
+    border: 1px solid lightgray;
+    &--list{
+      &-item{
+        padding: 10px 20px;
+        border-bottom: 1px solid lightgray;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+    }
+    &--title{
+      background: rgba(232, 232, 232, 0.5);
+      @include flex;
+      padding: 15px 30px;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-bottom: 1px solid lightgray;
+      & span{
+        @include flex;
+        font-size: 18px;
+        & svg{
+          margin-right: 5px;
+          color: gray;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+#profile__btn{
+  width: 200px !important;
+}
+#profile__btn--home{
+  margin-right: 50px !important;
+  background-color: #ffffff !important;
+  border-color: #000000 !important;
+  color: #000000 !important;
+  width: 200px !important;
+}
+

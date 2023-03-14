@@ -7,7 +7,8 @@ const defaultState = {
     statistic:{}
     },
     id:"",
-    friends:[]
+    subscribeList:[],
+    subscribersList:[]
 }
 
 export const profile = (state = defaultState,action) => {
@@ -18,8 +19,8 @@ export const profile = (state = defaultState,action) => {
         case "LOAD_ID":{
             return({...state,id:action.payload})
         }
-        case "LOAD_FRIENDS":{
-            return({...state,friends:action.payload})
+        case "LOAD_SUBSCRIBE":{
+            return({...state,subscribeList:action.payload.subscribeList,subscribersList:action.payload.subscribersList})
         }
         default:{
             return state;

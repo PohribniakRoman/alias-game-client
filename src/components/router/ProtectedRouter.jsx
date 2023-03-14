@@ -17,11 +17,11 @@ export const ProtectedRouter = ({authorized, unAuthorized}) => {
                 const {profile} = await (await fetch(ENDPOINTS.profile,{...ENDPOINTS.params,body:JSON.stringify({userId:resp.id})})).json();
                 dispatch({type:"LOAD_PROFILE",payload:profile});
                 dispatch({type:"LOAD_ID",payload:profile._id});
-                dispatch({type:"LOAD_FRIENDS",payload:profile.friends});
+                dispatch({type:"LOAD_SUBSCRIBE",payload:{subscribersList:profile.subscribersList,subscribeList:profile.subscribeList}});
             }
             setAuthorized(resp.success);
         })()
-    },[])
+    },[dispatch])
     if (isAuthorized === null) {
         return (<Backdrop
             sx={{color: '#FFFFFF', zIndex: (theme) => theme.zIndex.drawer + 1}}

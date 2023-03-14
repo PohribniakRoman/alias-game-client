@@ -1,4 +1,5 @@
 .auth{
+    background: #eee;
     user-select: none;
     @include flex;
     height: 100vh;
@@ -70,7 +71,7 @@
     &__banner{
         width: 75%;
         height: 100%;
-        background-image: url("https://creativedestructionlab.com/wp-content/uploads/2021/05/CDL-Neuro-Press-1600x900.jpg");
+        background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Abstract-Wallpaper-4K-Wallpaper-Blue-1.jpg");
         background-size: cover;
         background-position: center;
     }

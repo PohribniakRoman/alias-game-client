@@ -20,7 +20,7 @@ export const Navigation = () => {
             <nav className={`home__navigation--item ${href.includes("/profile") && "active"}`}><Link to={`/profile/${profile.id}`}>profile</Link></nav>
             <nav className={`home__navigation--item ${href==="/new" && "active"}`}><Link to="/new">new game</Link></nav>
             <nav className={`home__navigation--item ${href==="/lobbies" && "active"}`}><Link to="/lobbies">lobbies</Link></nav>
-            <Button  variant="contained" className="auth__submit home__btn" onClick={()=>{
+            <Button  variant="contained" className="auth__submit home__btn" id="navigation__btn" onClick={()=>{
                 cookies.remove("token");
                 toRedirect(true);
             }}>Log out <BsFillDoorOpenFill/></Button>

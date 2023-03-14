@@ -36,4 +36,11 @@ a{
 //reset
 @import "reset.css";
 
+#root{
+    height: 100vh;
+    width: 100%;
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Abstract-Wallpaper-4K-Wallpaper-Blue-1.jpg");
+    background-position: center;
+    background-size: cover;
+}
 

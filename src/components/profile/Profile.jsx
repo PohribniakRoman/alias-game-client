@@ -24,7 +24,7 @@ export const Profile = () =>{
                 setSuccess(false);
             }
         })()
-    },[profile])
+    },[profile,dispatch])
 
     if(success === null){
         return (<Backdrop

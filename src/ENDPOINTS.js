@@ -1,5 +1,5 @@
-const host = "http://localhost:5000";
-
+const host = "https://alias-game.herokuapp.com";
+// http://localhost:5000
 export const ENDPOINTS = {
     login:`${host}/auth/login`,
     reg:`${host}/auth/register`,

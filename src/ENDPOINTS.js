@@ -1,5 +1,5 @@
-const host = "https://alias-game.herokuapp.com";
-// http://localhost:5000
+const host = "http://localhost:5000";
+// const host = "https://alias-game.herokuapp.com";
 export const ENDPOINTS = {
     login:`${host}/auth/login`,
     reg:`${host}/auth/register`,
@@ -7,6 +7,7 @@ export const ENDPOINTS = {
     profile:`${host}/profile/load`,
     add:`${host}/profile/add`,
     remove:`${host}/profile/remove`,
+    getAll:`${host}/profile/all`,
     params:{
         method:"POST",
         mode: "cors",

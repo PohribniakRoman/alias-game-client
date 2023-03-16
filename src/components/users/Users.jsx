@@ -16,7 +16,7 @@ const Users = props => {
         <div className="profile__friends" style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}>
             <h1 className="profile__friends--title">All users</h1>
             {userList.map(user=>{
-                return <Link key={user.id}   to={`/profile/${user.id}`}><div className="profile__friends--list-item">{user.username}</div></Link>;
+                return <Link key={user.id} to={`/profile/${user.id}`}><div className="profile__friends--list-item">{user.username}</div></Link>;
             })}
         </div>
     </>);

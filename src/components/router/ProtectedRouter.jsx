@@ -12,7 +12,6 @@ export const ProtectedRouter = ({authorized, unAuthorized}) => {
         (async () => {
             const token = cookies.get("token");
             const resp = await (await fetch(ENDPOINTS.auth,{...ENDPOINTS.params,body:JSON.stringify({token})})).json();
-            console.log(resp)
             if(resp.success){
                 const {profile} = await (await fetch(ENDPOINTS.profile,{...ENDPOINTS.params,body:JSON.stringify({userId:resp.id})})).json();
                 dispatch({type:"LOAD_PROFILE",payload:profile});

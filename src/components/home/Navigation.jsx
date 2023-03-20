@@ -1,18 +1,13 @@
-import {Link, Navigate, useHref} from "react-router-dom";
+import {Link, useHref, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Button} from "@mui/material";
 import Cookies from "universal-cookie";
-import {useState} from "react";
 import {BsFillDoorOpenFill} from "react-icons/bs"
 const cookies = new Cookies();
 export const Navigation = () => {
     const profile = useSelector(state => state.profile);
     const href = useHref();
-    const [redirect,toRedirect] = useState(false);
-
-    if(redirect){
-        return <Navigate to="/auth"/>
-    }
+    const navigate = useNavigate();
 
     return <nav className="home__navigation">
             <div className="home__logo">Alias</div>
@@ -23,7 +18,7 @@ export const Navigation = () => {
             <nav className={`home__navigation--item ${href==="/users" && "active"}`}><Link to="/users">users</Link></nav>
             <Button  variant="contained" className="auth__submit home__btn" id="navigation__btn" onClick={()=>{
                 cookies.remove("token");
-                toRedirect(true);
+                navigate("/auth");
             }}>Log out <BsFillDoorOpenFill/></Button>
         </nav>
 }

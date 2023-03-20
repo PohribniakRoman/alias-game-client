@@ -7,6 +7,7 @@ import {NewGame} from "../game/NewGame";
 import {Profile} from "../profile/Profile";
 import {Lobbies} from "../game/Lobbies";
 import Users from "../users/Users";
+import Game from "../game/Game";
 
 export const Router = () =>{
    return(<Routes>
@@ -15,6 +16,7 @@ export const Router = () =>{
         <Route exact path="/new" element={<ProtectedRouter authorized={<NewGame/>} />}/>
         <Route exact path="/profile/:userid" element={<ProtectedRouter authorized={<Profile/>} />}/>
         <Route exact path="/lobbies" element={<ProtectedRouter authorized={<Lobbies/>} />}/>
+        <Route exact path="/lobbies/:gameid" element={<ProtectedRouter authorized={<Game/>} />}/>
         <Route exact path="/users" element={<ProtectedRouter authorized={<Users/>} />}/>
         <Route path="/*" element={<Page404/>}/>
     </Routes>)

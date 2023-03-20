@@ -1,8 +1,13 @@
 import {Navigation} from "../home/Navigation";
-import {socket} from "../../ws";
+import {Button} from "@mui/material";
+import {v4} from "uuid";
+import {useNavigate} from "react-router-dom";
 export const NewGame = () => {
-    console.log(socket.id);
+    const navigate = useNavigate();
     return(<>
         <Navigation/>
+        <div>
+            <Button onClick={()=>{navigate(`/lobbies/${v4()}`)}}>Create new game</Button>
+        </div>
     </>)
 }

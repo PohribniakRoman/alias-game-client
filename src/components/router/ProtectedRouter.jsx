@@ -23,7 +23,7 @@ export const ProtectedRouter = ({authorized, unAuthorized}) => {
     },[dispatch])
     if (isAuthorized === null) {
         return (<Backdrop
-            sx={{color: '#FFFFFF', zIndex: (theme) => theme.zIndex.drawer + 1}}
+            sx={{color: '#FFFFFF'}}
             open={true}>
             <CircularProgress color="inherit"/>
         </Backdrop>);

@@ -24,7 +24,6 @@ const submit = (event,data,isLogin,dispatch,update,redirect) =>{
 }
 
 const handleResponse = async (request,dispatch,redirect) => {
-    console.log(request)
     const response = await ((await request).json());
         switch (response.status) {
             case 201: {

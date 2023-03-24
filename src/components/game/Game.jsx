@@ -13,14 +13,14 @@ const Game = props => {
 
     useEffect(()=>{
 
-        socket.emit("ENTER",{user:{id:profile.id,name:profile.data.username},gameId:gameid})
+        socket.emit("ENTER",{user:{id:profile.id,name:profile.name},gameId:gameid})
 
         socket.on("GAME_DATA",({game})=>{
             setGame(game)
         })
 
         return ()=>{
-            socket.emit("LEAVE",{user:{id:profile.id,name:profile.data.username},gameId:gameid})
+            socket.emit("LEAVE",{user:{id:profile.id,name:profile.name},gameId:gameid})
         }
     },[])
 

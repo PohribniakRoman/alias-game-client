@@ -17,6 +17,7 @@ export const ProtectedRouter = ({authorized, unAuthorized}) => {
                 dispatch({type:"LOAD_PROFILE",payload:profile});
                 dispatch({type:"LOAD_ID",payload:profile._id});
                 dispatch({type:"LOAD_SUBSCRIBE",payload:{subscribersList:profile.subscribersList,subscribeList:profile.subscribeList}});
+                dispatch({type:"LOAD_NAME",payload:profile.username});
             }
             setAuthorized(resp.success);
         })()

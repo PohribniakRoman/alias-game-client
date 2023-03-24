@@ -8,7 +8,8 @@ const defaultState = {
     },
     id:"",
     subscribeList:[],
-    subscribersList:[]
+    subscribersList:[],
+    name:"",
 }
 
 export const profile = (state = defaultState,action) => {
@@ -21,6 +22,9 @@ export const profile = (state = defaultState,action) => {
         }
         case "LOAD_SUBSCRIBE":{
             return({...state,subscribeList:action.payload.subscribeList,subscribersList:action.payload.subscribersList})
+        }
+        case "LOAD_NAME":{
+            return({...state,name:action.payload})
         }
         default:{
             return state;

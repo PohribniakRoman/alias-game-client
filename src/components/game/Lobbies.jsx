@@ -6,16 +6,17 @@ import {Link} from "react-router-dom";
 
 export const Lobbies = () => {
     const [games,setGames] = useState({});
+    const [isloading,setLoading] = useState(true);
 
     useEffect(()=>{
         socket.emit("GET_LOBBIES");
         socket.on("SHARE_LOBBIES",({games})=>{
-            console.log(games)
             setGames(games);
+            setLoading(false);
         })
     },[])
 
-    if(Object.values(games).length === 0){
+    if(isloading){
         return (<Backdrop
             sx={{color: '#FFFFFF'}}
             open={true}>
@@ -27,12 +28,15 @@ export const Lobbies = () => {
         <Navigation/>
         <div className="home__rules">
             {Object.keys(games).map(game=>{
+                const isDisabled = games[game].participants.length >= 4;
                 return <div key={game} style={{width:"100%",display:"flex",justifyContent:"space-around",alignItems:"center"}}>
                     <div>{game}</div>
                     <div>{games[game].participants.length}/4</div>
-                    <Link to={`/lobbies/${game}`}>
+                    {isDisabled?
+                        <Button disabled={isDisabled} className="auth__submit" style={{color:'#ffffff'}}>Room is full</Button>
+                        :<Link to={`/lobbies/${game}`}>
                         <Button className="auth__submit" style={{color:'#ffffff'}}>Join</Button>
-                    </Link>
+                    </Link>}
                 </div>
             })}
         </div>

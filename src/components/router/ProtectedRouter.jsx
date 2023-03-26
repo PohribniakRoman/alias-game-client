@@ -15,9 +15,6 @@ export const ProtectedRouter = ({authorized, unAuthorized}) => {
             if(resp.success){
                 const {profile} = await (await fetch(ENDPOINTS.profile,{...ENDPOINTS.params,body:JSON.stringify({userId:resp.id})})).json();
                 dispatch({type:"LOAD_PROFILE",payload:profile});
-                dispatch({type:"LOAD_ID",payload:profile._id});
-                dispatch({type:"LOAD_SUBSCRIBE",payload:{subscribersList:profile.subscribersList,subscribeList:profile.subscribeList}});
-                dispatch({type:"LOAD_NAME",payload:profile.username});
             }
             setAuthorized(resp.success);
         })()

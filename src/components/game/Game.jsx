@@ -5,22 +5,24 @@ import {validate} from "uuid";
 import {useSelector} from "react-redux";
 import {Navigation} from "../home/Navigation";
 import {Backdrop, CircularProgress, Typography} from "@mui/material";
+
+
 const Game = props => {
-    const profile = useSelector(state=>state.profile)
+    const profile = useSelector(state=>state.profile.data)
     const {gameid} = useParams();
     const isGameAlive = !validate(gameid);
     const [game,setGame] = useState({});
 
     useEffect(()=>{
-
-        socket.emit("ENTER",{user:{id:profile.id,name:profile.name},gameId:gameid})
+        const userData = {user:{id:profile._id,username:profile.username},gameId:gameid}
+        socket.emit("ENTER",userData);
 
         socket.on("GAME_DATA",({game})=>{
             setGame(game)
         })
 
         return ()=>{
-            socket.emit("LEAVE",{user:{id:profile.id,name:profile.name},gameId:gameid})
+            socket.emit("LEAVE",userData)
         }
     },[])
 
@@ -42,7 +44,7 @@ const Game = props => {
           <div className="home__rules">
               <Typography variant="h5">{gameid}</Typography>
               <Typography variant="h5">{game.participants.map(user=>{
-                  return <div key={user.participant}>{user.participant.name}</div>
+                  return <div key={user.participant}>{user.participant.username}</div>
               })}</Typography>
           </div>
         </>);

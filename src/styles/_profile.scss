@@ -1,7 +1,12 @@
 .profile{
+  width: 80%;
+  margin:0 auto;
+  margin-top: 10vh;
   user-select: none;
-  @include flex;
-  flex-direction: column;
+  &__wrapper{
+    @include flex;
+    justify-content: flex-start;
+  }
   &__id{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -10,11 +15,11 @@
     color: gray;
   }
   &__avatar{
+    margin-right:30px;
     background-size: cover;
     background-position: center;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
   }
   &__title{
     color: #ffffff;
@@ -23,65 +28,48 @@
     text-transform: capitalize;
   }
   &__statistic{
-    margin-top: 20px;
-    width: 500px;
-    background: rgba(232, 232, 232, 1);
-    border-radius:10px;
-    height: 150px;
-    -webkit-box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
-    -moz-box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
-    box-shadow: 0px 0px 14px -6px rgba(0,0,0,1);
-    @include flex;
     &--item{
-      border-right: 1px solid gray;
-      width: 33%;
-      height: 100%;
+      color: #eeeeee;
       @include flex;
-      flex-direction: column;
+      justify-content: flex-start;
       & h3{
-        font-size: 20px;
-        text-transform: uppercase;
+        font-size: 14px;
         font-weight: 500;
-        margin-bottom: 5px;
       }
       & span{
-        font-size: 36px;
+        font-size: 14px;
         font-weight: 300;
       }
     }
   }
   &__friends{
-    margin-top: 20px;
-    border-radius: 10px;
-    width: 500px;
-    min-height: 300px;
-    border: 1px solid lightgray;
-    background: #ffffff;
-    &--wrapper{
-      @include flex;
-      width: 1100px;
-      justify-content: space-between !important;
-    }
     &--list{
+      &-avatar{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+        margin-right: 10px;
+      }
       &-item{
-        padding: 10px 20px;
-        border-bottom: 1px solid lightgray;
+        @include flex;
+        justify-content: flex-start;
+        color: #eeeeee;
+        padding:15px 0px;
         text-transform: capitalize;
         cursor: pointer;
       }
     }
     &--title{
-      background: rgba(232, 232, 232, 1);
-      border-top-right-radius: 7px;
-      border-top-left-radius: 7px;
+      color: #eeeeee;
       @include flex;
-      padding: 15px 30px;
       justify-content: space-between;
       font-size: 14px;
       font-weight: 600;
       text-transform: uppercase;
-      border-bottom: 1px solid lightgray;
       & span{
+        margin-left: 40px;
         @include flex;
         font-size: 18px;
         & svg{
@@ -94,7 +82,7 @@
   }
 }
 #profile__btn{
-  width: 200px !important;
+  width: 150px !important;
   border: 1px solid #ffffff;
 }
 #profile__btn--home{
@@ -104,4 +92,3 @@
   color: #000000 !important;
   width: 200px !important;
 }
-

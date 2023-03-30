@@ -1,5 +1,4 @@
-const host = "http://localhost:5000/";
-// const host = "https://alias-game.herokuapp.com/";
+const host = process.env.NODE_ENV === "development" ? "http://localhost:5000/" : "https://alias-game.herokuapp.com/";
 export const ENDPOINTS = {
     host,
     login:`${host}auth/login`,

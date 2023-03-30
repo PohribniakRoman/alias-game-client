@@ -5,10 +5,54 @@
     @include flex;
     flex-direction: column;
   }
+  &__wrapper{
+    color: #ffffff !important;
+    & span{
+      margin-right: 10px;
+    }
+    & div{
+      border-bottom: 1px solid #ff005a;
+    }
+    & div::before,& div::after{
+      display: none !important;
+    }
+    & div *{
+      color: #8400ff !important;
+      width: 30px !important;
+    }
+  }
   &__submit{
     background-color: rgba(0,0,0,0) !important;
     color: #8400ff !important;
     padding: 10px 30px !important;
     border:1px solid #ff005a !important;
+    margin-top: 40px!important;
   }
+  &__select--items{
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0) !important;
+    color: #8400ff !important;
+    border-bottom: 1px solid #ff005a !important;
+  }
+    &__team{
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & span{
+        margin-right: 10px !important;
+      }
+      &--input *::before,&--input *::after{
+        display: none !important;
+      }
+      &--input{
+        border-bottom: 1px solid #ff005a !important;
+      }
+      &--input *{
+        color: #8400ff !important;
+      }
+    }
+}
+.MuiMenu-paper{
+  background-color: rgba(0,0,0,1) !important;
 }

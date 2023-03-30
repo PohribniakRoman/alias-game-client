@@ -12,6 +12,7 @@ export const Lobbies = () => {
         socket.emit("GET_LOBBIES");
         socket.on("SHARE_LOBBIES",({games})=>{
             setGames(games);
+            console.log(games)
             setLoading(false);
         })
     },[])

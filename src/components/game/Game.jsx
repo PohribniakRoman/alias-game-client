@@ -22,9 +22,10 @@ const Game = props => {
         })
 
         return ()=>{
+            console.log("LEAVE")
             socket.emit("LEAVE",userData)
         }
-    },[])
+    })
 
 
     if(isGameAlive){

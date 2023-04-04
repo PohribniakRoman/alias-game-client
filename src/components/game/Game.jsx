@@ -17,15 +17,16 @@ const Game = props => {
         const userData = {user:{id:profile._id,username:profile.username},gameId:gameid}
         socket.emit("ENTER",userData);
 
-        socket.on("GAME_DATA",({game})=>{
+        socket.on("UPDATE_DATA",({game})=>{
+            console.log(game)
             setGame(game)
         })
 
         return ()=>{
-            console.log("LEAVE")
+            console.log("WORK")
             socket.emit("LEAVE",userData)
         }
-    })
+    },[])
 
 
     if(isGameAlive){
@@ -42,7 +43,7 @@ const Game = props => {
 
     return (<>
           <Navigation/>
-          <div className="home__rules">
+          <div className="game">
               <Typography variant="h5">{gameid}</Typography>
               <Typography variant="h5">{game.participants.map(user=>{
                   return <div key={user.participant}>{user.participant.username}</div>

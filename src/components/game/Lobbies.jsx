@@ -27,7 +27,7 @@ export const Lobbies = () => {
 
     return(<>
         <Navigation/>
-        <div className="home__rules">
+        <div className="lobby">
             {Object.keys(games).map(game=>{
                 const isDisabled = games[game].participants.length >= 4;
                 return <div key={game} style={{width:"100%",display:"flex",justifyContent:"space-around",alignItems:"center"}}>

@@ -34,6 +34,8 @@ a{
 @import "auth";
 @import "notfound.css";
 @import "new-game";
+@import "lobby";
+@import "game";
 
 //reset
 @import "reset.css";
@@ -41,6 +43,9 @@ a{
 #root{
     height: 100vh;
     width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("https://wallpaperaccess.com/full/3394245.jpg");
     background-color: #000000;
 }
 

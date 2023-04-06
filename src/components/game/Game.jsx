@@ -5,6 +5,7 @@ import {validate} from "uuid";
 import {useSelector} from "react-redux";
 import {Navigation} from "../home/Navigation";
 import {Backdrop, CircularProgress, Typography} from "@mui/material";
+import { SelectTeam } from './SelectTeam';
 
 
 const Game = props => {
@@ -12,18 +13,22 @@ const Game = props => {
     const {gameid} = useParams();
     const isGameAlive = !validate(gameid);
     const [game,setGame] = useState({});
+    const [isGameStarted,setStarted] = useState(false);
 
     useEffect(()=>{
         const userData = {user:{id:profile._id,username:profile.username},gameId:gameid}
         socket.emit("ENTER",userData);
 
         socket.on("UPDATE_DATA",({game})=>{
-            console.log(game)
             setGame(game)
         })
 
+        socket.emit("IS_GAME_STARTED",{gameId:gameid})
+        socket.on("GAME_STATE",({isStarted})=>{
+            setStarted(isStarted)
+        })
+
         return ()=>{
-            console.log("WORK")
             socket.emit("LEAVE",userData)
         }
     },[])
@@ -44,10 +49,8 @@ const Game = props => {
     return (<>
           <Navigation/>
           <div className="game">
-              <Typography variant="h5">{gameid}</Typography>
-              <Typography variant="h5">{game.participants.map(user=>{
-                  return <div key={user.participant}>{user.participant.username}</div>
-              })}</Typography>
+              <Typography variant="h5">Game id - {gameid}</Typography>
+                {isGameStarted?"":<SelectTeam teams={game.teams} participants={game.participants} gameId={gameid}/>}
           </div>
         </>);
 };

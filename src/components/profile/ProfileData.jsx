@@ -50,7 +50,7 @@ const ProfileData = ({changeProfile,data}) => {
                 </div>
             </div>
             <div className="profile__friends">
-                <h1 className="profile__friends--title" style={{color:"#8400ff"}}>
+                <h1 className="profile__friends--title" style={{color:"#0077ff"}}>
                     <p>Subscribe List:</p>
                     <span><FaUserFriends/>{data.subscribeList.length}</span>
                 </h1>
@@ -64,7 +64,7 @@ const ProfileData = ({changeProfile,data}) => {
                 </div>
             </div>
             <div className="profile__friends">
-                <h1 className="profile__friends--title" style={{color:"#ff005a"}}>
+                <h1 className="profile__friends--title" style={{color:"#0077ff"}}>
                     <p>Subscribers List:</p>
                     <span><FaUserFriends/>{data.subscribersList.length}</span>
                 </h1>

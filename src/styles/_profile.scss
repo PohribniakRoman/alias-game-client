@@ -22,14 +22,14 @@
     height: 150px;
   }
   &__title{
-    color: #ffffff;
+    color: #000000;
     font-weight: 600;
     font-size: 36px;
     text-transform: capitalize;
   }
   &__statistic{
     &--item{
-      color: #eeeeee;
+      color: #000000;
       @include flex;
       justify-content: flex-start;
       & h3{
@@ -55,14 +55,14 @@
       &-item{
         @include flex;
         justify-content: flex-start;
-        color: #eeeeee;
+        color: #000000;
         padding:15px 0px;
         text-transform: capitalize;
         cursor: pointer;
       }
     }
     &--title{
-      color: #eeeeee;
+      color: #000000;
       @include flex;
       justify-content: space-between;
       font-size: 14px;

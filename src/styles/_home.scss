@@ -6,19 +6,19 @@
     justify-content: flex-start !important;
     height: 80px;
     &--item{
-      text-transform: uppercase;
+      text-transform: capitalize;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 16px;
       margin: 10px 15px 5px;
       position: relative;
       cursor: pointer;
       a{
-        color: #ffffff;
+        color: #00d9ff;
         text-decoration: none;
         outline: none;
         transition: .3s;
         &:hover{
-          color: #8400ff;
+          color: #0077ff;
         }
       }
     }
@@ -27,9 +27,9 @@
     font-family: montserrat,sans-serif;
     font-size:42px;
     font-weight: 900;
-    color: #030005;
-    text-transform: uppercase;
-    text-shadow: -1px -1px 0 #8400ff,1px 1px 0 #ff005a;
+    color: #00d9ff;
+    text-transform: capitalize;
+    text-shadow: -2px -2px 0 #0077ff;
     margin: 10px 40px;
   }
   &__rules{
@@ -48,8 +48,7 @@
 #navigation__btn{
   position: absolute !important;
   background-color: rgba(0,0,0,0) !important;
-  color: #8400ff;
-  border:1px solid #ff005a;
+  color: #0077ff;
   right: 20px;
   & svg{
     margin-left: 5px;
@@ -61,5 +60,5 @@
   transform-origin: left center;
 }
 .active a{
-  color: #ff005a !important;
+  color: #0077ff !important;
 }

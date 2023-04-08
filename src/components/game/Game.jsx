@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {Navigation} from "../home/Navigation";
 import {Backdrop, CircularProgress, Typography} from "@mui/material";
 import { SelectTeam } from './SelectTeam';
+import { GameProcess } from './GameProcess';
 
 
 const Game = props => {
@@ -50,7 +51,7 @@ const Game = props => {
           <Navigation/>
           <div className="game">
               <Typography variant="h5">Game id - {gameid}</Typography>
-                {isGameStarted?"":<SelectTeam teams={game.teams} participants={game.participants} gameId={gameid}/>}
+                {isGameStarted?<GameProcess gameId={gameid}/>:<SelectTeam teams={game.teams} participants={game.participants} gameId={gameid}/>}
           </div>
         </>);
 };

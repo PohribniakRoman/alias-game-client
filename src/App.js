@@ -11,7 +11,7 @@ function App() {
   return (<>
     <BrowserRouter>
       <Provider store={store}>
-        <Router/>
+        <Router />
         <NotificationContainer/>
       </Provider>
     </BrowserRouter>

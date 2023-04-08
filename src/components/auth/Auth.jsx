@@ -47,9 +47,6 @@ export default function Auth(){
                         </p>
                     </div>
                 </div>
-                <div className="auth__banner">
-
-                </div>
             </section>
         )
 }

@@ -5,7 +5,6 @@ import { useState } from "react"
 export const Timer = ({time}) =>{
     const [timer,setTimer] = useState(time);
     useEffect(()=>{
-        console.log("work!");
         setTimeout(()=>{
             if(timer !== 0){
                 setTimer(timer-1)

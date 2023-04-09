@@ -15,7 +15,7 @@ const Game = props => {
     const isGameAlive = !validate(gameid);
     const [game,setGame] = useState({});
     const [isGameStarted,setStarted] = useState(false);
-
+    console.log(game);
     useEffect(()=>{
         const userData = {user:{id:profile._id,username:profile.username},gameId:gameid}
         socket.emit("ENTER",userData);

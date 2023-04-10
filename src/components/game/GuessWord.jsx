@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import{ words } from "./WordDB";
 import { Button, Typography } from "@mui/material";
 
-export const GuessWord = ()=> {
+export const GuessWord = ()=> { 
     const [guessed,setGuessed] = useState([{text:words[Math.floor(Math.random() * words.length)],checked:false,guessed:false}])
+    
     const genWord = () =>{
         while(true){
                 let index = Math.floor(Math.random() * words.length);
                 const flag = guessed.filter(word=>word?.text === words[index])
-                console.log(index);
                 if(flag.length === 0){
                     setGuessed([...guessed,{text:words[index],checked:false,guessed:false}])
                     break;

@@ -6,6 +6,7 @@ import { GuessWord } from "./GuessWord";
 
 export const GameProcess = ({gameId}) =>{
     const [time,setTime]= useState(null);
+    const [isAsking,setAsking] = useState(false);
 
     useEffect(()=>{
         socket.emit("GET_TIMER",{gameId});
@@ -15,14 +16,18 @@ export const GameProcess = ({gameId}) =>{
                 setTime(time);
             }
         })
+        socket.on("START_ASK",()=>{
+            setAsking(true);
+        })
         socket.on("TIMER_END",()=>{
             setTime(null);
+            setAsking(false);
         })
     },[])
     return <>
         {time!==null?<Timer time={time}/>:<Button onClick={()=>{
             socket.emit("START_TIMER",{gameId});
         }}>StartTimer</Button>}
-        {time!==null?<GuessWord/>:""}
+        {isAsking?<GuessWord/>:""}
     </>
 }

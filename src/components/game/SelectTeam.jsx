@@ -39,12 +39,11 @@ export const SelectTeam = ({teams,participants,gameId}) =>{
             })}
         </div>
         <Button className="game__start-btn" onClick={()=>{
-            socket.emit("START_GAME",{gameId});
             if(teams.length !== Object.keys(teamParticipants).length)return
             for(let team in teamParticipants){
-                if(team.length !== 2)return
+                if(teamParticipants[team].length !== 2)return
             }
-
+            socket.emit("START_GAME",{gameId});
         }}>Start</Button>
     </> 
 }

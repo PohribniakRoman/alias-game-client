@@ -13,10 +13,10 @@ export const CheckedWords = ({gameId}) => {
     },[])
     return(
         <>
-            <Typography>Score:{checked.filter(word =>word.guessed === true).length}</Typography>
+            <Typography>Score:{checked.filter(word =>word.guessed === true)?.length}</Typography>
             <ul>
-            {checked.map(word=>{
-                return <li key={word?.text}>{word?.text}</li>
+            {checked.map((word,index)=>{
+                return <li key={index}>{word?.text}</li>
             })}
             </ul>
         </>

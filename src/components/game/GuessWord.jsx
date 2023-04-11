@@ -3,7 +3,7 @@ import{ words } from "./WordDB";
 import { Button, Typography } from "@mui/material";
 import {socket} from "../../ws";
 
-
+let once = false;
 export const GuessWord = ({gameId})=> { 
     const [guessed,setGuessed] = useState([{text:words[Math.floor(Math.random() * words.length)],checked:false,guessed:false}])
     
@@ -14,24 +14,25 @@ export const GuessWord = ({gameId})=> {
                 if(flag.length === 0){
                     const newGuessed = [...guessed,{text:words[index],checked:false,guessed:false}];
                     setGuessed(newGuessed)
-                    socket.emit("ADD_ALL",{gameId,words:newGuessed})                    
                     break;
                 }
         }
     }
-    const updateCkecked = (word,guessed) => {
+    const updateCkecked = (word,guessResult) => {
         setGuessed(prevState=>{
-            socket.emit("ADD_CHECKED",{gameId,words:guessed})                    
-            const edited = prevState.map(obj=>{if(obj.text === word.text){return{...word,checked:true,guessed}}else return obj})
+            const edited = prevState.map(obj=>{if(obj.text === word.text){return{...word,checked:true,guessed:guessResult}}else return obj})
+            socket.emit("ADD_CHECKED",{gameId,words:edited.filter(word=>word.checked===true)})                    
+            socket.emit("ADD_ALL",{gameId,words:edited})                    
             return [...edited]
         })
     }
     useEffect(()=>{
         socket.emit("GET_ALL",{gameId});
         socket.on("SEND_ALL",({words})=>{
-            if(words.length>1 && guessed.length === 1){
+            if(!once){
                 setGuessed([...words])
-            }
+                once = true;
+            }                
         })
     },[])
     return(<>

@@ -17,9 +17,11 @@ export const SelectTeam = ({teams,participants,gameId}) =>{
     });
 
     return<>
+        <h1 className="game__select">Select team & Start game</h1>
+        {noteam.length!==0?<h1 className="game__no-team--title">Without team:</h1>:""}
         <div className="game__no-team">
             {noteam.map(user=>{
-                return <div key={user}>{user}</div>
+                return <div ckey={user}>{user}</div>
             })}
         </div>
         <div className="game__team--wrapper">

@@ -35,7 +35,7 @@ export const GameProcess = ({gameId}) =>{
         })
     },[])
     return <>
-        {time!==null?<Timer time={time} gameId={gameId}/>:isMyMove && <Button onClick={()=>{
+        {time!==null?<Timer time={time} gameId={gameId} isAsking={isAsking}/>:isMyMove && <Button onClick={()=>{
             socket.emit("START_TIMER",{gameId});
         }}>StartTimer</Button>}
         {isAsking?time!== null && <GuessWord gameId={gameId}/>:time !== null && <CheckedWords gameId={gameId}/>}

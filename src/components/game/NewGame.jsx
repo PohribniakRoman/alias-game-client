@@ -1,5 +1,5 @@
 import {Navigation} from "../home/Navigation";
-import {Button,MenuItem, Select, TextField} from "@mui/material";
+import {Button,MenuItem, Select, TextField, Typography} from "@mui/material";
 import {v4} from "uuid";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
@@ -25,6 +25,7 @@ export const NewGame = (ev, ...args) => {
                 dispatch({type: "NEW_NOTIFICATION", payload: {message:"Team name can't be null & must be uniq", variant: "error"}});
             }
         }}>
+            <Typography variant="h3" className="new-game__title">New Game</Typography>
             <div className="new-game__wrapper">
                 <span>Select count of members:</span>
                 <Select

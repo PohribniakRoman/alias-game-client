@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Navigation} from "../home/Navigation";
 import {ENDPOINTS} from "../../ENDPOINTS";
 import {Link} from "react-router-dom";
-import { ListItem, ListItemText } from '@mui/material';
+import { ListItem, ListItemText, Typography } from '@mui/material';
 
 const Users = props => {
     const [userList,updateUserList] = useState([]);
@@ -14,10 +14,14 @@ const Users = props => {
     },[])
     return (<>
         <Navigation/>
-            <h1 className="profile__friends--title">All users</h1>
+        <div className="users__wrapper">
+            <Typography variant="h3" className="users__title">All users</Typography>
             {userList.map(user=>{
-                return <Link key={user.id} to={`/profile/${user.id}`}><ListItem button><ListItemText>{user.username}</ListItemText></ListItem></Link>;
+                return <Link key={user.id} to={`/profile/${user.id}`}><ListItem button><ListItemText className="users__name">
+                        {user.username}
+                    </ListItemText></ListItem></Link>;
             })}
+        </div> 
     </>);
 };
 export default Users;

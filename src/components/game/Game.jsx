@@ -9,13 +9,12 @@ import { SelectTeam } from './SelectTeam';
 import { GameProcess } from './GameProcess';
 
 
-const Game = props => {
+const Game = () => {
     const profile = useSelector(state=>state.profile.data)
     const {gameid} = useParams();
     const isGameAlive = !validate(gameid);
     const [game,setGame] = useState({});
     const [isGameStarted,setStarted] = useState(false);
-    console.log(game);
     useEffect(()=>{
         const userData = {user:{id:profile._id,username:profile.username},gameId:gameid}
         socket.emit("ENTER",userData);
@@ -50,7 +49,7 @@ const Game = props => {
     return (<>
           <Navigation/>
           <div className="game">
-              <Typography variant="h5">Game id - {gameid}</Typography>
+              <div variant="h5" className="game__id">ID - {gameid}</div>
                 {isGameStarted?<GameProcess gameId={gameid}/>:<SelectTeam teams={game.teams} participants={game.participants} gameId={gameid}/>}
           </div>
         </>);

@@ -3,7 +3,20 @@
     width: 80%;
     margin: 0 auto;
     @include flex;
+    background: #fff;
     flex-direction: column;
+    height: 60vh;
+  }
+  &__title{
+    font-family: 'Montserrat', sans-serif;
+    font-size:42px;
+    font-weight: 900;
+    color: #00d9ff;
+    text-transform: capitalize;
+    text-shadow: -2px -2px 0 #0077ff;
+    cursor: context-menu;
+    user-select: none;
+    padding: 15px;
   }
   &__wrapper{
     & span{

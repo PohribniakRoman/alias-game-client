@@ -24,7 +24,7 @@
     }
   }
   &__logo{
-    font-family: montserrat,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:42px;
     font-weight: 900;
     color: #00d9ff;
@@ -33,11 +33,13 @@
     margin: 10px 40px;
   }
   &__rules{
-    @include flex;
-    flex-direction: column;
+    width: 80%;
     margin: 0 auto;
-    width: 70%;
+    @include flex();
+    justify-content: flex-start;
+    background-color: #fff;
     height: 80vh;
+    flex-direction: column;
     &--description{
       & p{
         width: 80%;
@@ -46,7 +48,15 @@
       }
     }
     &--title{
-      color: #0077ff;
+      font-family: 'Montserrat', sans-serif;
+      font-size:42px;
+      font-weight: 900;
+      color: #00d9ff;
+      text-transform: capitalize;
+      text-shadow: -2px -2px 0 #0077ff;
+      cursor: context-menu;
+      user-select: none;
+      padding: 15px;
     }
   }
 }

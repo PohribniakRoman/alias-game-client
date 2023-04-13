@@ -3,13 +3,13 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { socket } from "../../ws";
 
-export const Timer = ({time,gameId}) =>{
+export const Timer = ({time,gameId,isAsking}) =>{
     const [timer,setTimer] = useState(time);
     useEffect(()=>{
         setTimeout(()=>{
             if(timer !== 1){
                 setTimer(timer-1)
-            }else{
+            }else if(isAsking){
                 socket.emit("END_TIMER",{gameId})
             }
         },1000)

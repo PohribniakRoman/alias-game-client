@@ -1,7 +1,7 @@
 import {Navigation} from "../home/Navigation";
 import {socket} from "../../ws";
 import React, {useEffect, useState} from "react";
-import {Backdrop, Button, CircularProgress} from "@mui/material";
+import {Backdrop, Button, CircularProgress, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 
 export const Lobbies = () => {
@@ -28,15 +28,16 @@ export const Lobbies = () => {
     return(<>
         <Navigation/>
         <div className="lobby">
+            <Typography variant="h3" className="lobby__title">Lobbies</Typography>
             {Object.keys(games).map(game=>{
-                const isDisabled = games[game].participants.length >= 4;
-                return <div key={game} style={{width:"100%",display:"flex",justifyContent:"space-around",alignItems:"center"}}>
+                const isDisabled = games[game].participants.length >= games[game].teams.length * 2;
+                return <div key={game} className="lobby__container">
                     <div>{game}</div>
-                    <div>{games[game].participants.length}/4</div>
+                    <div>{games[game].participants.length}/{ games[game].teams.length * 2}</div>
                     {isDisabled?
-                        <Button disabled={isDisabled} className="auth__submit" style={{color:'#ffffff'}}>Room is full</Button>
+                        <Button disabled={isDisabled} className="lobby__join">Room is full</Button>
                         :<Link to={`/lobbies/${game}`}>
-                        <Button className="auth__submit" style={{color:'#ffffff'}}>Join</Button>
+                        <Button className="lobby__join">Join</Button>
                     </Link>}
                 </div>
             })}

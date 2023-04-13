@@ -1,7 +1,8 @@
 .profile{
   width: 80%;
   margin:0 auto;
-  margin-top: 10vh;
+  background-color: #ffffff;
+  height: 80vh;
   user-select: none;
   &__wrapper{
     @include flex;
